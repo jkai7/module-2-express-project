@@ -1,0 +1,26 @@
+    <h1 class="text-center top-height">Please Login!</h1>
+
+    <form action="/bestow/login" method="post">
+    
+    <label for="username">Username</label>
+        <br>
+    <input id="username" type="text" name="username" placeholder="superKing75">
+        <br><br>
+    <label for="password">Password</label>
+        <br>
+    <input id="password" type="password" name="password" placeholder="password">
+        <br><br>
+    <button class="btn btn-success b-color">Login</button>
+        <br><br>
+    {{#if message}}
+        <div class="message">
+        {{message}}
+        </div>
+    {{/if}}
+    
+        <a href="/bestow" class="">Home</a><span class="invisible">--</span>|<span class="invisible">-</span> <a href="/bestow/signup">Sign up</a>
+
+    </form>
+
+
+

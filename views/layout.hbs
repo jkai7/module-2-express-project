@@ -1,13 +1,70 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>{{title}}</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+
     <link rel='stylesheet' href='/stylesheets/style.css' />
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <script src='/javascripts/script.js'></script>
+    <title>{{title}}</title>
   </head>
   <body>
+    
+  <!--nav bar-->
+  <div>
+<!-- Second navbar for sign in -->
+    <nav class="navbar navbar-default nav-color">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-2">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/bestow"><span class="span-letters"><span class="bestow">B</span>ESTOW</span></a>
+        </div>
+    
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navbar-collapse-2">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/bestow"><span class="span-letters"><span>Home</span></a></li>
+            <li><a href="/bestow/about"><span class="span-letters">About</span></a></li>
+            <li><a href="/bestow/signup"><span class="span-letters">Sign up</span></a></li>  
+              <a class="btn btn-default btn-outline btn-circle b-color" href="/bestow/login"><span class="span-letters">Login</span></a>
+            </li>
+          </ul>
+          </nav><!--END NAV-->
 
-    {{{body}}}
 
-    <script src='/javascripts/script.js'></script>
+<div class="text-center"><!--Card-->
+    <div class="col-md-4">
+
+    </div>
+<div class="col-md-4">
+      <div class="wrimagecard wrimagecard-topimage">
+          <div class="wrimagecard-topimage_header" style="background-color:  rgba(250, 188, 9, 0.1)">
+             <center><i class="fa fa-info-circle" style="color:#fabc09"> </i></center>
+          </div>
+
+
+ {{{body}}}
+
+          
+          <div class="wrimagecard-topimage_title">
+
+          </div>
+         
+      </div>
+	</div>
+
+    </div><!--END Card-->
+
   </body>
 </html>
