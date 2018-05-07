@@ -9,8 +9,9 @@ const userSchema = new Schema({
     firstname: String,
     lastname: String,
     username: String,
-    password: {type: String, min: 7, max: 15},
+    password: String,
     email: String,
+    productsUpLoaded: [Schema.Types.ObjectId]
 
 })
 

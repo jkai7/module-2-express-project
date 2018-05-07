@@ -13,6 +13,7 @@ const passport      = require('passport');
 const session       = require('express-session');
 const bcrypt        = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
+const flash         = require('connect-flash')
 
 
 
@@ -75,6 +76,8 @@ passport.deserializeUser((id, cb) => {
   });
 });
 
+//==use flash messages
+app.use(flash());
 passport.use(new LocalStrategy({
   passReqToCallback: true
 }, (req, username, password, next) => {
@@ -83,10 +86,10 @@ passport.use(new LocalStrategy({
       return next(err);
     }
     if (!user) {
-      return next(null, false, { message: "Incorrect username" });
+      return next(null, false, { message: "Incorrect Username or Password" });
     }
     if (!bcrypt.compareSync(password, user.password)) {
-      return next(null, false, { message: "Incorrect password" });
+      return next(null, false, { message: "Incorrect Username or Password" });
     }
 
     return next(null, user);

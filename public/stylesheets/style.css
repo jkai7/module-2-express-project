@@ -360,7 +360,8 @@ template {
   border-radius: 0px; }
 
 .span-letters {
-  color: #DCDCDC; }
+  color: #DCDCDC;
+  text-decoration: none; }
 
 .span-letters:hover {
   color: #fff; }
@@ -377,6 +378,10 @@ body {
 /* Index */
 .bestow {
   color: #F9BA03; }
+
+.explore {
+  text-decoration: none;
+  color: #333333; }
 
 a:hover {
   color: #F9BA03; }
@@ -404,7 +409,11 @@ a:active {
 
 .b-color:hover {
   background-color: #F9BA03;
-  border-color: #fff; }
+  border-color: #fff;
+  box-shadow: 2px 5px 10px 0px rgba(14, 32, 150, 0.2); }
+
+.b-color:active {
+  box-shadow: 0px 0px 0px 0px rgba(14, 32, 150, 0.2); }
 
 input {
   color: #333333; }
@@ -412,11 +421,22 @@ input {
 .col-md-3 {
   width: 33.333%; }
 
+.message {
+  background: #FFE4E1;
+  box-sizing: border-box;
+  color: #DC143C;
+  margin: 20px auto;
+  padding: 10px;
+  width: 50%;
+  font-size: 16px;
+  border-radius: 20px;
+  border-color: #DC143C; }
+
 .wrimagecard {
   margin-top: 0;
   margin-bottom: 1.5rem;
   background: #fff;
-  box-shadow: 12px 15px 20px 0px rgba(46, 61, 73, 0.15);
+  box-shadow: 12px 15px 20px 0px rgba(11, 19, 73, 0.15);
   border-radius: 4px;
   transition: all 0.3s ease; }
 
@@ -428,10 +448,6 @@ input {
 .p-wrd-dis {
   color: #C0C0C0;
   font-size: 12px; }
-
-.message {
-  color: red;
-  font-size: 16px; }
 
 /* END signup */
 

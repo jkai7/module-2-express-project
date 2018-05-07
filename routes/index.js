@@ -4,6 +4,8 @@ const User        = require('../models/user');
 const bcrypt      = require('bcrypt');
 const saltRounds  = 10;
 const passport    = require('passport')
+const ensureLogin = require("connect-ensure-login");
+
 
 /* GET home page */
 router.get('/', (req, res, next) => {
@@ -52,53 +54,58 @@ router.post('/signup', (req, res, next) => {
       const salt = bcrypt.genSaltSync(saltRounds);
       const hashPass = bcrypt.hashSync(password, salt);
 
-      User.create({
+      const newUser = new User({
         firstname: firstname,
         lastname: lastname,
-        username: username, 
-        password: hashPass, 
+        username: username,
+        password: hashPass,
         email: email
-      })
-      .then((theUser) => {
-        res.redirect('/bestow/login')
-      })
-      .catch((err) => {
-        console.log(err)
-        next(err)
-      })//==END create user
-
-    })//=End .then user findOne
-    .catch((err) => {
-      next(err)
-    })
-
+      });
+  
+      newUser.save((err) => {
+        if (err) {
+          res.render("auth/signup", { message: "Something went wrong" });
+        } else {
+          res.redirect("/bestow/login");
+        }
+      });
+    });
 })//==END signup POST
 
 
 /* GET login page */
 router.get('/login', (req, res, next) => {
-  res.render('auth/login')
+  res.render('auth/login', { "message": req.flash("error") })
 });//==END login
 
 /* Post login page */
 router.post('/login', passport.authenticate('local',
 {
-  successRedirect: "/bestow/success",
+  successRedirect: "/bestow/profile",
   failureRedirect: "/bestow/login",
   failureFlash: true,
   passReqToCallback: true
 }))//==END login post
 
-
-/* Get success login */
-router.get('/success', (req,res, next) => {
-  res.render('auth/success')
+/* Get explore page */
+router.get('/explore', ensureLogin.ensureLoggedIn('/bestow'), (req,res, next) => {
+  res.render('auth/explore', {user: req.user})
 })//==END success page
+
+/* GET user page */
+router.get('/profile', ensureLogin.ensureLoggedIn('/bestow/login'), (req,res, next) => {
+  res.render('auth/profile', {user: req.user})
+});//==END user page
 
 /* GET logout page */
 router.get("/logout", (req, res) => {
   req.logout();
   res.redirect("/bestow/login");
 });//==END logout
+
+/* GET private page */ 
+router.get("/private", ensureLogin.ensureLoggedIn('/bestow/login'), (req, res) => {
+  res.render("auth/private", { user: req.user });
+});//==END private page
 
 module.exports = router;

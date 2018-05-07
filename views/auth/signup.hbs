@@ -4,22 +4,16 @@
 
 <div class="text-center">
 <form action="/bestow/signup" method="post">
-    
-    <label for="firstname">First Name</label>
+        
         <br>
-    <input id="firstname" type="text" name="firstname" placeholder="Bender">
-        <br><br>
-    <label for="lastname">Last Name</label>
-        <br>
-    <input id="lastname" type="text" name="lastname" placeholder="Bending-Rodriguez">
-        <br><br>
     <label for="username">Username</label>
         <br>
     <input id="username" type="text" name="username" placeholder="superKing75">
         <br><br>
     <label for="password">Password<br><span class="p-wrd-dis">(must be at least 7 characters)</span></label>
         <br>
-    <input id="password" type="password" name="password" placeholder="password">
+    <input id="password" type="password" name="password" placeholder="password" minlength="7"
+       maxlength="15">
         <br><br>
     <label for="email">E-mail</label>
         <br>
@@ -33,7 +27,7 @@
         </div>
     {{/if}}
         <br>
-    <a href="/bestow" class="">Home</a><span class="invisible">--</span>|<span class="invisible">-</span> <a href="/bestow/signup">Login</a>
+    <a href="/bestow/about" class="">About</a><span class="invisible">--</span>|<span class="invisible">-</span> <a href="/bestow/signup">Login</a>
 
 </form>
 </div>
