@@ -108,5 +108,10 @@ app.use(passport.session());
 const index = require('./routes/index');
 app.use('/bestow', index);
 
+const profileRoutes = require('./routes/profileRoutes');
+app.use('/bestow/profile', profileRoutes);
+
+const inventoryRoutes = require('./routes/inventoryRoutes');
+app.use('/bestow/inventory', inventoryRoutes);
 
 module.exports = app;

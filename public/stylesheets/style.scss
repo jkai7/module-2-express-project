@@ -391,6 +391,11 @@ body{
   color: #333333;
   font-family: 'Lato', sans-serif;
 }
+p {
+  font-size: 16px;
+  line-height: 2em;
+  padding: 10px 30px;
+}
 
 //==========INDEX===============
 
@@ -403,6 +408,10 @@ body{
   text-decoration: none;
   color: #333333
 }
+.explore:hover {
+  text-decoration: none;
+}
+
 a:hover {
 color: #F9BA03
 }
@@ -437,7 +446,7 @@ a:active {
 .b-color:hover {
   background-color: #F9BA03;
   border-color: #fff;
-  box-shadow: 2px 5px 10px 0px rgba(14, 32, 150, 0.2); 
+  box-shadow: 2px 5px 10px 0px rgba(14, 32, 150, 0.5); 
 }
 .b-color:active {
   box-shadow: 0px 0px 0px 0px rgba(14, 32, 150, 0.2); 

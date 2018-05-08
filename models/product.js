@@ -5,13 +5,15 @@ mongoose.connect('mongodb://localhost/module-2-full-stack-project', {useMongoCli
 
 const productSchema = new Schema({
     
-
     productname: String,
     productType: {type: String, enum: ['Instruments', 'Electronics', 'Furniture', 'Home Appliances', 'Outdoor Equipment']},
     description:String,
     condition: {type: String, enum: ['New', 'Very Good', 'Good', 'Fair', 'Poor'], default: 'Good'},
     price: Number,
+    city: String,
+    areaCode: String,
     owner: [{ type: Schema.Types.ObjectId, ref: "User" }]
+
 })
 
 const Product = mongoose.model(`Product`, productSchema);

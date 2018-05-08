@@ -1,0 +1,25 @@
+<h1 class="top-height">Welcome <span class="bestow">{{user.username}}</span>!</h1>
+    <br>
+<div>
+     <h3><a href='/bestow/inventory' class="explore">Inventory</a></h3>   
+</div>
+
+<div>
+     <h3><a href='/bestow/profile/{{user._id}}/edit' class="explore">Edit Profile</a></h3>   
+</div>
+
+    <br>
+
+    <p>{{user.firstname}} {{user.lastname}}</p>
+    <p>{{user.email}}</p>
+
+
+
+ {{!-- <a href="/bestow/inventory" class="">Inventory</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span> 
+        <a href="/bestow/profile">Profile</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span>  --}}
+        <a href="/bestow/logout" class="">Logout</a>
+
+
+{{!-- <button type="button" class="btn btn-success b-color"><a href="/bestow/logout"><span class="span-letters">Logout</span></a></button> --}}

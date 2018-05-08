@@ -5,7 +5,6 @@ mongoose.connect('mongodb://localhost/module-2-full-stack-project', {useMongoCli
 
 const userSchema = new Schema({
     
-
     firstname: String,
     lastname: String,
     username: String,

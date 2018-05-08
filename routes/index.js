@@ -1,10 +1,15 @@
 const express     = require('express');
 const router      = express.Router();
+//==Models
 const User        = require('../models/user');
+// const Picture     = require('../models/pictures');
+//==passport 
 const bcrypt      = require('bcrypt');
 const saltRounds  = 10;
 const passport    = require('passport')
 const ensureLogin = require("connect-ensure-login");
+//==multer
+// const multer      = require('multer');
 
 
 /* GET home page */
@@ -81,7 +86,7 @@ router.get('/login', (req, res, next) => {
 /* Post login page */
 router.post('/login', passport.authenticate('local',
 {
-  successRedirect: "/bestow/profile",
+  successRedirect: "/bestow/explore",
   failureRedirect: "/bestow/login",
   failureFlash: true,
   passReqToCallback: true
@@ -89,13 +94,11 @@ router.post('/login', passport.authenticate('local',
 
 /* Get explore page */
 router.get('/explore', ensureLogin.ensureLoggedIn('/bestow'), (req,res, next) => {
+  console.log("user in explore: ", req.user)
   res.render('auth/explore', {user: req.user})
 })//==END success page
 
-/* GET user page */
-router.get('/profile', ensureLogin.ensureLoggedIn('/bestow/login'), (req,res, next) => {
-  res.render('auth/profile', {user: req.user})
-});//==END user page
+
 
 /* GET logout page */
 router.get("/logout", (req, res) => {
@@ -104,8 +107,8 @@ router.get("/logout", (req, res) => {
 });//==END logout
 
 /* GET private page */ 
-router.get("/private", ensureLogin.ensureLoggedIn('/bestow/login'), (req, res) => {
-  res.render("auth/private", { user: req.user });
-});//==END private page
+// router.get("/private", ensureLogin.ensureLoggedIn('/bestow/login'), (req, res) => {
+//   res.render("auth/private", { user: req.user });
+// });//==END private page
 
 module.exports = router;

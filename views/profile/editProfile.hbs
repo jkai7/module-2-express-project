@@ -1,0 +1,30 @@
+<h1 class="top-height">Edit</h1>
+
+<form method="POST" action="/bestow/profile/{{user._id}}" >
+
+<label for="update-username">Username: </label>
+  <br>
+<input type="text" name="updatedUsername" id="update-username" value="{{user.username}}">
+  <br>
+<label for="update-firstname">First Name</label>
+  <br>
+<input type="text" name="updatedFirstname" id="update-firstname" value="{{user.firstname}}" >
+  <br>
+<label for="update-lastname">Last Name</label>
+  <br>
+<input type="text" name="updatedLastname" id="update-lastname" value="{{user.lastname}}" >
+  <br>
+<label for="update-email">Email:</label>
+  <br>
+<input type="text" name="updatedEmail" id="update-email" value="{{user.email}}">
+  <br><br>
+<button type="submit">Save changes</button>
+
+</form>
+
+
+{{#if user}}
+  <div>
+    <a href="/bestow/login">Login</a>
+  </div>
+{{/if}}
