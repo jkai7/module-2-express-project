@@ -377,8 +377,13 @@ body {
 
 p {
   font-size: 16px;
-  line-height: 2em;
   padding: 10px 30px; }
+
+.let-spacing {
+  line-height: 2em; }
+
+li {
+  list-style: none; }
 
 /* Index */
 .bestow {
@@ -458,5 +463,13 @@ input {
   font-size: 12px; }
 
 /* END signup */
+/* new inventory */
+.move-left {
+  margin-left: 130px; }
+
+.move-a-left {
+  margin-right: 40px; }
+
+/* END new inventory */
 
 /*# sourceMappingURL=style.css.map */

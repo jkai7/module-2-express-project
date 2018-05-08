@@ -12,10 +12,11 @@ const productSchema = new Schema({
     price: Number,
     city: String,
     areaCode: String,
-    owner: [{ type: Schema.Types.ObjectId, ref: "User" }]
+    image: String,
+    owner: { type: Schema.Types.ObjectId, ref: "User" }
 
 })
 
 const Product = mongoose.model(`Product`, productSchema);
 
-module.exports = User;
+module.exports = Product;

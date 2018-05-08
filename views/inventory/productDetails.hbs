@@ -1,0 +1,18 @@
+
+<div class="top-height">
+<p><b>Product: </b> {{ theProduct.productname }}<br></p>
+<img src="{{ theProduct.image }}" alt=""  width="200" height="200"> 
+<p class="">
+    <b>Type: </b> {{ theProduct.productType }}<br>
+    <b>Description:       </b> {{ theProduct.description }}</p>
+
+</div>
+
+  <br>
+  <a href="/bestow/inventory/create">Add Stuff</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span> 
+ <a href="/bestow/inventory" class="">My Stuff</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span> 
+        <a href="/bestow/profile/{{user._id}}">Profile</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span> 
+        <a href="/bestow/logout" class="">Logout</a>
