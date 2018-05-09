@@ -9,7 +9,9 @@ const saltRounds  = 10;
 const passport    = require('passport')
 const ensureLogin = require("connect-ensure-login");
 //==multer
-// const multer      = require('multer');
+const cloudinary = require('cloudinary');
+const multer = require('multer');
+const uploadCloud = require('../config/cloudinary.js');
 
 
 /* GET home page */
@@ -71,7 +73,7 @@ router.post('/signup', (req, res, next) => {
         if (err) {
           res.render("auth/signup", { message: "Something went wrong" });
         } else {
-          res.redirect("/bestow/login");
+          res.redirect("/login");
         }
       });
     });
@@ -86,14 +88,14 @@ router.get('/login', (req, res, next) => {
 /* Post login page */
 router.post('/login', passport.authenticate('local',
 {
-  successRedirect: "/bestow/explore",
-  failureRedirect: "/bestow/login",
+  successRedirect: "/explore",
+  failureRedirect: "/login",
   failureFlash: true,
   passReqToCallback: true
 }))//==END login post
 
 /* Get explore page */
-router.get('/explore', ensureLogin.ensureLoggedIn('/bestow'), (req,res, next) => {
+router.get('/explore', ensureLogin.ensureLoggedIn('/login'), (req,res, next) => {
   console.log("user in explore: ", req.user)
   res.render('auth/explore', {user: req.user})
 })//==END success page
@@ -103,7 +105,7 @@ router.get('/explore', ensureLogin.ensureLoggedIn('/bestow'), (req,res, next) =>
 /* GET logout page */
 router.get("/logout", (req, res) => {
   req.logout();
-  res.redirect("/bestow/login");
+  res.redirect("/login");
 });//==END logout
 
 /* GET private page */ 

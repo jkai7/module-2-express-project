@@ -4,17 +4,17 @@
 
 <ul>
     {{#each products}}
-        <h3><li ><a class="move-a-left" href="/bestow/inventory/{{this._id}}">{{ this.productname }}</a></li></h3>
+        <h3><li ><a class="move-a-left" href="/inventory/{{this._id}}">{{ this.productname }}</a></li></h3>
     {{/each }}
 </ul>
 
 
 
 <br>
-<a href="/bestow/inventory/create">Add Stuff</a>
+<a href="/inventory/create">Add Stuff</a>
         <span class="invisible">--</span>|<span class="invisible">-</span> 
-        <a href="/bestow/profile/{{user._id}}">Profile</a>
+        <a href="/profile/{{user._id}}">Profile</a>
         <span class="invisible">--</span>|<span class="invisible">-</span> 
-        <a href="/bestow/logout" class="">Logout</a>
+        <a href="/logout" class="">Logout</a>
 
 </div>

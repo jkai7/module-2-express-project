@@ -6,6 +6,9 @@ const ensureLogin = require("connect-ensure-login");
 // setup for image upload
 const multer = require('multer');
 const path = require('path');
+const cloudinary = require('cloudinary');
+const uploadCloud = require('../config/cloudinary.js');
+
 
 const myUploader = multer({
     dest:path.join( __dirname, '../public/images')
@@ -13,7 +16,7 @@ const myUploader = multer({
 
 
    /* GET profile page */
-router.get('/:id', ensureLogin.ensureLoggedIn('/bestow/login'), (req,res, next) => {
+router.get('/:id', ensureLogin.ensureLoggedIn('/login'), (req,res, next) => {
     const userId = req.params.id;
     User.findById(userId)
         .then(userFromDb => {
@@ -28,7 +31,7 @@ router.get('/:id', ensureLogin.ensureLoggedIn('/bestow/login'), (req,res, next) 
 
 // edit profile
 
-router.get('/:id/edit', ensureLogin.ensureLoggedIn('/bestow/login'), (req, res, next) => {
+router.get('/:id/edit', ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
     const userId = req.params.id;
 
     User.findById(userId)
@@ -41,7 +44,7 @@ router.get('/:id/edit', ensureLogin.ensureLoggedIn('/bestow/login'), (req, res, 
 })
 
 
-router.post('/:id', ensureLogin.ensureLoggedIn('/bestow/login'), myUploader.single('userImage'), (req, res, next) => {
+router.post('/:id', ensureLogin.ensureLoggedIn('/login'), myUploader.single('userImage'), (req, res, next) => {
     const userId = req.params.id;
 
     const newUsername = req.body.updatedUsername;
@@ -59,22 +62,15 @@ router.post('/:id', ensureLogin.ensureLoggedIn('/bestow/login'), myUploader.sing
         image: newImage
     })
     
-//     .then(() => {
-//         if( image == null){
-//           res.render(`/:id/edit`, {user: userFromDb, message: 'Need an Avatar!'})
-//         }else{
-//             res.redirect(`/bestow/profile/${userId}`)
-        
-// }})
     
 .then( (user) => {
-        res.redirect(`/bestow/profile/${userId}`)
+        res.redirect(`/profile/${userId}`)
     } )
     .catch(error => {
         console.log("Error while saving updates: ", error)
     })
 
-})
+})//==END profile edit
 
 
 
