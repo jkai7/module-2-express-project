@@ -6,8 +6,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const updatedImage = document.getElementById("userImage").required;
 }
 
-
-
+  
 
 
 

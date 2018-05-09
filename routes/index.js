@@ -2,6 +2,7 @@ const express     = require('express');
 const router      = express.Router();
 //==Models
 const User        = require('../models/user');
+const Product     = require('../models/product');
 // const Picture     = require('../models/pictures');
 //==passport 
 const bcrypt      = require('bcrypt');
@@ -100,6 +101,13 @@ router.get('/explore', ensureLogin.ensureLoggedIn('/login'), (req,res, next) => 
   res.render('auth/explore', {user: req.user})
 })//==END success page
 
+/* Get furniture page */
+router.get("/furniture", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
+  Product.find()
+  .then(reponseFromDb => {
+      res.render("auth/furniture", { products: reponseFromDb, user: req.user });
+  })//==END 
+})//==END success page
 
 
 /* GET logout page */
