@@ -1,7 +1,7 @@
 
 <div class="top-height">
    
-    <h3 class="underline">Add Stuff</h3>
+    <h1 class="underline">Add Stuff</h1>
         <br>
     <form action="/bestow/inventory/create" method="post" enctype="multipart/form-data">
         
@@ -31,7 +31,8 @@
             <br><br>
         <label for="">Price: $</label>
         
-        <input type="number" name="productPrice" min="0.00" step="0.00" max="3000" value="0.00">
+        <input type="number" name="productPrice" min="1.00" step="0.00" max="3000" value="1.00">
+            <label>per day</label>
             <br><br>
         <label for="">City:</label>
             <br>
@@ -39,12 +40,12 @@
             <br><br>
         <label for="">Zip Code: </label>
             <br>
-        <input type="text" name="productAreaCode" id="">
+        <input type="text" name="productAreaCode" id="" minlength="5">
             <br><br>
         <label for="">Product Image:</label>
             <br>
             <div class="text-center">
-        <input  class="move-left" type="file" name="productImage" id="">
+        <input  class="move-left" type="file" name="productImage" id="image" required>
             </div>
             <br><br>
         <label for="">Description:</label>

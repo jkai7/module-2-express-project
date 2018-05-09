@@ -385,6 +385,10 @@ p {
 li {
   list-style: none; }
 
+.flex-container {
+  display: flex;
+  justify-content: center; }
+
 /* Index */
 .bestow {
   color: #F9BA03; }

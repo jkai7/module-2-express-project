@@ -1,5 +1,32 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+  
+
+   requireImage = () =>{
+    const updatedImage = document.getElementById("userImage").required;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+}, false);
+
 //   let max_fields      = 10; //maximum input boxes allowed
 //   let wrapper         = $(".input_fields_wrap"); //Fields wrapper
 //   let add_button      = $(".add_field_button"); //Add button ID
@@ -18,5 +45,3 @@ document.addEventListener('DOMContentLoaded', () => {
 //   })
 
   // console.log('IronGenerator JS imported successfully!');
-
-}, false);

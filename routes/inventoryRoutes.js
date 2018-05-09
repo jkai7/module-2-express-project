@@ -40,7 +40,7 @@ router.post('/create', ensureLogin.ensureLoggedIn('/bestow/login'), myUploader.s
     .catch( err => {
         console.log("Error while saving the new product: ", err)
     })
-})
+})//==END create new product
 
 router.get("/", ensureLogin.ensureLoggedIn('/bestow/login'), (req, res) => {
   Product.find()

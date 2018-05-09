@@ -1,11 +1,16 @@
 <h1 class="top-height underline">Edit Profile</h1>
-<br>
 
-<form method="POST" action="/bestow/profile/{{user._id}}" >
-
+<form method="POST" action="/bestow/profile/{{user._id}}"  enctype="multipart/form-data">
+  <br>
+<label for="">Avatar:</label>
+  <br>
+<div class="text-center">
+  <input  class="move-left" type="file" name="userImage" id="image" required>
+</div>
+  <br>
 <label for="update-username">Username: </label>
   <br>
-<input type="text" name="updatedUsername" id="update-username" value="{{user.username}}">
+<input type="text" name="updatedUsername" id="update-username" value="{{user.username}}" required>
   <br>
 <label for="update-firstname">First Name</label>
   <br>
@@ -17,10 +22,15 @@
   <br>
 <label for="update-email">Email:</label>
   <br>
-<input type="text" name="updatedEmail" id="update-email" value="{{user.email}}">
+<input type="text" name="updatedEmail" id="update-email" value="{{user.email}}" required>
   <br><br>
+  
 <button type="submit" class="btn btn-warning b-color">Save changes</button>
-
+  {{#if message}}
+        <div class="message">
+    {{message}}
+        </div>
+    {{/if}}
 </form>
   <br>
  <a href="/bestow/inventory" class="">My Stuff</a>

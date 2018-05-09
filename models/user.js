@@ -10,6 +10,7 @@ const userSchema = new Schema({
     username: String,
     password: String,
     email: String,
+    image: {type: String, default:"/images/user-default-yellow.png"},
     productsUpLoaded: [Schema.Types.ObjectId]
 
 })

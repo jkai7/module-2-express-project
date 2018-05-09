@@ -12,7 +12,7 @@ const productSchema = new Schema({
     price: Number,
     city: String,
     areaCode: String,
-    image: String,
+    image: {type: String, default:"/images/user-default.png"},
     owner: { type: Schema.Types.ObjectId, ref: "User" }
 
 })

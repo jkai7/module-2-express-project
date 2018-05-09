@@ -1,11 +1,10 @@
 
 <div class="top-height">
-<h3 class="underline">My Stuff</h3>
+<h1 class="underline">My Stuff</h1>
 
-<br>
 <ul>
     {{#each products}}
-        <li ><a class="move-a-left" href="/bestow/inventory/{{this._id}}">{{ this.productname }}</a></li>
+        <h3><li ><a class="move-a-left" href="/bestow/inventory/{{this._id}}">{{ this.productname }}</a></li></h3>
     {{/each }}
 </ul>
 
