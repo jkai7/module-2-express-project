@@ -15,11 +15,11 @@ const bcrypt        = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const flash         = require('connect-flash')
 
-
+// 'mongodb://localhost/module-2-full-stack-project'
 
 mongoose.Promise = Promise;
 mongoose
-  .connect('mongodb://localhost/module-2-full-stack-project', {useMongoClient: true})
+  .connect(process.env.MONGODB_URI, {useMongoClient: true})
   .then(() => {
     console.log('Connected to Mongo!')
   }).catch(err => {
