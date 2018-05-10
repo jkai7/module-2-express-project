@@ -369,6 +369,9 @@ template {
 .span-letters:active {
   color: #0B124C; }
 
+.navbar {
+  margin-bottom: 0px; }
+
 /* END nav bar */
 body {
   background: #fff;
@@ -382,6 +385,9 @@ p {
 .let-spacing {
   line-height: 2em; }
 
+.center-let {
+  margin-top: 50px; }
+
 li {
   list-style: none; }
 
@@ -389,8 +395,11 @@ li {
   display: flex;
   justify-content: center; }
 
+.flex-center-items {
+  align-items: center; }
+
 img {
-  border: #F9BA03 1px solid; }
+  border: #F9BA03 2px solid; }
 
 .item-display {
   margin-right: 40px; }
@@ -417,7 +426,7 @@ a:active {
 
 .top-height {
   padding-top: 30px;
-  margin-top: 30px; }
+  margin-top: 60px; }
 
 /* END Index */
 /* Signup */
@@ -443,6 +452,12 @@ input {
 
 .col-md-3 {
   width: 33.333%; }
+
+.center-b {
+  margin-left: 20px; }
+
+.center-b:hover {
+  color: #F9BA03; }
 
 .message {
   background: #FFE4E1;
@@ -481,5 +496,12 @@ input {
   margin-right: 40px; }
 
 /* END new inventory */
+.bg-overlay {
+  height: 895px;
+  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("http://www.milkandflowers.com/wp-content/uploads/2018/02/HomeArt-Stickers-White-Bricks.jpg") center center no-repeat scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover; }
 
 /*# sourceMappingURL=style.css.map */

@@ -50,12 +50,20 @@ router.post('/create', ensureLogin.ensureLoggedIn('/login'), myUploader.single('
     })
 })//==END create new product
 
+
+/* inventory page */
 router.get("/", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
+  
     // get all the stuff from DB
+    
   Product.find()
   .then(reponseFromDb => {
       // reponseFromDb => these are all the products that are currently in DB
       const myStuff = [];
+      
+      if(myStuff.length == 0){
+        res.render("inventory/inventory", { user: req.user });
+    }
       // take the array of all products and for each item check if 
       // oneThing.owner.equals(req.user._id) => the owner of the item (represented by ID in DB) is the same combination of nubmers as the USER ID
       // i can' use if (oneThing.owner === req.user._id) because I work with mongo database id's so I need to use .equals() js method
@@ -63,7 +71,8 @@ router.get("/", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
           if(oneThing.owner.equals(req.user._id)){
               // if the condition is true, push the item into the myStuff array
               myStuff.push(oneThing)
-          }
+            
+        }
           //                                  // send myStuff array to be displayed as products in hbs
           res.render("inventory/inventory", { products: myStuff, user: req.user });
       })
@@ -79,16 +88,11 @@ router.get("/", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
       .then( productFromDb => {
           console.log(productFromDb)
           res.render('inventory/productDetails', { theProduct: productFromDb, user: req.user })
-
-
-      } )//==End then
+        } )//==End then
       .catch( error => {
           console.log("Error while displaying product details: ", error);
       } )
-
-
-
-  })//==End details page
+})//==End details page
 
 
 // delete product page
@@ -105,32 +109,21 @@ router.get('/:productId/delete', ensureLogin.ensureLoggedIn('/login'), (req, res
     })
 })
 
-
-
-
-router.post('/:productId', ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
+router.post('/:productId/delete', ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
     
+    
+    const productId = req.params.productId;
 
-   
+        Product.findByIdAndRemove(productId)
+        .then(() => {
+           
+            res.redirect("/inventory");
+            
+        })
+        .catch( error => {
+            console.log("Error while deleting: ", error)
+        })
 
-    // function deleteProduct(){
-    // const productId = req.params.productId;
-
-    // // const newUsername = req.body.updatedUsername;
-    // // const newFirstname = req.body.updatedFirstname;
-    // // const newLastname = req.body.updatedLastname;
-    // // const newEmail = req.body.updatedEmail;
-    // // const newImage = `/images/${req.file.filename}`
-
-
-    // product.findByIdAndRemove(req.params.productId, (err, product))
-    // .then( (product) => {
-    //     res.redirect(`/inventory`)
-    // } )
-    // .catch(error => {
-    //     console.log("Error while deleting product: ", error)
-    // })
-    // }
 })//==END product delete
 
 
@@ -138,16 +131,5 @@ router.post('/:productId', ensureLogin.ensureLoggedIn('/login'), (req, res, next
 module.exports = router; 
 
 
-
-// function deleteProduct(){
-// const productId = req.params.productId;
-// Product.findByIdAndRemove(productId, (err, Product))
-// .then( (product) => {
-//     res.redirect(`/inventory`)
-// } )
-//     .catch(error => {
-//         console.log("Error while deleting product: ", error)
-//  })
-// }
 
 

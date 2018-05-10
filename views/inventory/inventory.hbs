@@ -2,23 +2,60 @@
 <div class="top-height">
 <h1 class="underline">My Stuff</h1>
 <br>
-<ul>
+        <a href="/explore">Back</a>
+        <span class="invisible">-</span>|<span class="invisible">-</span> 
+<a href="/inventory/create">Add Stuff</a>
+        {{!-- <span class="invisible">--</span>|<span class="invisible">-</span> 
+        <a href="/logout" class="">Logout</a> --}}
+        <br><br>
+    
+    
+        <div class="text-left item-display">
+<ul >
     {{#each products}}
-    <div >
         
-        <h4><li ><img src={{ this.image }}  class="item-display" alt="furniture"  class="text-left" width="85" height="85"><br><br>
-        <a class="move-a-left" href="/inventory/{{this._id}}">{{ this.productname }}</a></li></h4>
-            </div>
+        
+        <li class="flex-container">
+            
+        <div>
+        <img src={{ this.image }} alt="furniture"   width="100" height="100">
+        <br><br>
+        <form action="/inventory/{{this._id}}/delete" method="post">
+            <button class="center-b" type="submit">Remove</button>
+        </form>        
+        <br><br>
+        </div>
+
+        <div class="invisible">----</div>
+
+        
+        <div class="flex-container">
+        
+        <div>
+        <h4>{{ this.productname }}<br>
+        Price: ${{this.price}}</h4>
+        <a class="text-center" href="/inventory/{{this._id}}"><button class="btn btn-warning b-color">Details</button></a>
+        </div>
+
+        <div class="invisible">----</div>
+
+        
+        <div class="text-center">
+            <br>
+            <br>
+        </div>
+        
+        </div>
+
+        
+        
+
+        
+        </li>
+        
+        
     {{/each }}
 </ul>
+        </div>
 
-
-
-<br>
-<a href="/inventory/create">Add Stuff</a>
-        <span class="invisible">--</span>|<span class="invisible">-</span> 
-        <a href="/profile/{{user._id}}">Profile</a>
-        <span class="invisible">--</span>|<span class="invisible">-</span> 
-        <a href="/logout" class="">Logout</a>
-
-</div> 
+        </div>
