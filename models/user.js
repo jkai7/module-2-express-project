@@ -11,9 +11,12 @@ const userSchema = new Schema({
     password: String,
     email: String,
     image: {type: String, default:"/images/user-default-yellow.png"},
-    productsUpLoaded: [{type: Schema.Types.ObjectId, ref: "Product"}]
-
-})
+    productsUpLoaded: [{type: Schema.Types.ObjectId, ref: "Product"}],
+    productsBorrowed:[{type: Schema.Types.ObjectId, ref: "Product"}]
+},
+{
+    usePushEach: true
+  });
 
 const User = mongoose.model(`User`, userSchema);
 

@@ -52,30 +52,30 @@ router.post('/create', ensureLogin.ensureLoggedIn('/login'), myUploader.single('
 
 
 /* inventory page */
-router.get("/", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
+router.get("/", ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
   
     // get all the stuff from DB
-    
   Product.find()
   .then(reponseFromDb => {
       // reponseFromDb => these are all the products that are currently in DB
       const myStuff = [];
-      
-      if(myStuff.length == 0){
-        res.render("inventory/inventory", { user: req.user });
-    }
-      // take the array of all products and for each item check if 
-      // oneThing.owner.equals(req.user._id) => the owner of the item (represented by ID in DB) is the same combination of nubmers as the USER ID
-      // i can' use if (oneThing.owner === req.user._id) because I work with mongo database id's so I need to use .equals() js method
-      reponseFromDb.forEach( oneThing => {
-          if(oneThing.owner.equals(req.user._id)){
-              // if the condition is true, push the item into the myStuff array
-              myStuff.push(oneThing)
-            
-        }
-          //                                  // send myStuff array to be displayed as products in hbs
-          res.render("inventory/inventory", { products: myStuff, user: req.user });
-      })
+//    if(myStuff.length === 1){
+
+       // take the array of all products and for each item check if 
+       // oneThing.owner.equals(req.user._id) => the owner of the item (represented by ID in DB) is the same combination of nubmers as the USER ID
+       // i can' use if (oneThing.owner === req.user._id) because I work with mongo database id's so I need to use .equals() js method
+       reponseFromDb.forEach( oneThing => {
+           if(oneThing.owner.equals(req.user._id)){
+               // if the condition is true, push the item into the myStuff array
+               myStuff.push(oneThing)
+             }   
+           //                                  // send myStuff array to be displayed as products in hbs
+        })
+        //    } else {
+            res.render("inventory/inventory", { products: myStuff, user: req.user });
+    // res.render("inventory/inventory")
+   
+
       
   })
   });//==END 
@@ -84,10 +84,19 @@ router.get("/", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
   // details page
   router.get('/:productId', ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
       const productId = req.params.productId;
+      const isOwner = false;
+      var isReallyAvailable = false;
       Product.findById(productId)
       .then( productFromDb => {
-          console.log(productFromDb)
-          res.render('inventory/productDetails', { theProduct: productFromDb, user: req.user })
+        //   console.log(productFromDb)
+        if(productFromDb.owner.equals(req.user._id)){
+            isOwner = true;
+        }
+        if(productFromDb.isAvailable === true){
+            isReallyAvailable = true
+        }
+        console.log("isReallyAvailable: ", isReallyAvailable)
+          res.render('inventory/productDetails', { theProduct: productFromDb, user: req.user, isOwner, isReallyAvailable })
         } )//==End then
       .catch( error => {
           console.log("Error while displaying product details: ", error);
@@ -125,6 +134,37 @@ router.post('/:productId/delete', ensureLogin.ensureLoggedIn('/login'), (req, re
         })
 
 })//==END product delete
+
+
+
+router.post('/borrow/:productId', (req, res, next) => {
+    const productId = req.params.productId;
+    Product.findById(productId)
+    .then(foundProduct => {
+        // console.log("blahhhhhhh: ", foundProduct)
+        foundProduct.isAvailable = false;
+        foundProduct.save()
+        .then((product) => {
+            console.log("product after saving: ", product)
+            req.user.productsBorrowed.push(foundProduct);
+            req.user.save()
+            .then((user) => {
+                console.log("user after saving: ", user)
+                res.redirect('/explore')
+            })
+            .catch(err => {
+                console.log("err while borrowing: ", err)
+            })
+        })
+        .catch(err => {
+            console.log("err while saving product filed: ", err)
+        })
+        // console.log("found : ", foundProduct)
+    })
+    .catch(err => {
+        console.log("err while findnig the product: ", err)
+    })
+})
 
 
 

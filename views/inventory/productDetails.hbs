@@ -30,9 +30,17 @@
 </p>
 
         <span class="invisible">------</span>
+        {{#if isReallyAvailable}}
+        {{#unless isOwner}}
+<form action="/inventory/borrow/{{theProduct._id}}" method="POST">
+    <button class="btn btn-warning b-color" type="submit">Borrow</button>
+</form>
+{{/unless}}
+{{/if}}
 
-    <button class="btn btn-warning b-color ">Borrow</button>
-
+{{#unless isReallyAvailable}}
+<p>Booked for next 3 days</p>
+{{/unless}}
 
 </div>
    
