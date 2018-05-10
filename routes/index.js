@@ -103,13 +103,50 @@ router.get('/explore', ensureLogin.ensureLoggedIn('/login'), (req,res, next) => 
 
 /* Get furniture page */
 router.get("/furniture", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
-  Product.find()
+  Product.find({'productType': 'Furniture'})
   .then(reponseFromDb => {
+    console.log("reponseFromDb: ", reponseFromDb)
       res.render("auth/furniture", { products: reponseFromDb, user: req.user });
   })//==END 
-})//==END success page
+})//==END furniture page
 
+/* Get electronics page */
+router.get("/electronics", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
+  Product.find({'productType': 'Electronics'})
+  .then(reponseFromDb => {
+    console.log("reponseFromDb: ", reponseFromDb)
+      res.render("auth/electronics", { products: reponseFromDb, user: req.user });
+  })//==END 
+})//==END electronics page
 
+/* Get Home Appliances page */
+router.get("/homeAppliances", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
+  Product.find({'productType': 'Home Appliances'})
+  .then(reponseFromDb => {
+    console.log("reponseFromDb: ", reponseFromDb)
+      res.render("auth/homeAppliances", { products: reponseFromDb, user: req.user });
+  })//==END 
+})//==END Home Appliances page
+
+/* Get Instruments page */
+router.get("/instruments", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
+  Product.find({'productType': 'Instruments'})
+  .then(reponseFromDb => {
+    console.log("reponseFromDb: ", reponseFromDb)
+      res.render("auth/instruments", { products: reponseFromDb, user: req.user });
+  })//==END 
+})//==END Home Instruments page
+
+/* Get Outdoor Equipment page */
+router.get("/outdoorEquipment", ensureLogin.ensureLoggedIn('/login'), (req, res) => {
+  Product.find({'productType': 'Outdoor Equipment'})
+  .then(reponseFromDb => {
+    console.log("reponseFromDb: ", reponseFromDb)
+      res.render("auth/outdoorEquipment", { products: reponseFromDb, user: req.user });
+  })//==END 
+})//==END Outdoor Equipment page
+
+ 
 /* GET logout page */
 router.get("/logout", (req, res) => {
   req.logout();

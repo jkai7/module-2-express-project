@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+console.log("hey")
   
 
    requireImage = () =>{
@@ -12,9 +12,20 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+function deleteProduct(){
+  console.log(req.params)
+    // product.findByIdAndRemove(req.params.productId, callback)
+    // .then( productFromDb => {
+    //   console.log(productFromDb)
+      // res.render('inventory/inventory', { theProduct: productFromDb, user: req.user })
 
 
-
+//   // Product.findByIdAndRemove(req.params.productId, (Product) => {  
+//   //  console.log("hello delete")
+//   //     return res.redirect(`/inventory`)
+      
+//   });
+  }//==End delete
 
 
 

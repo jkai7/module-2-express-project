@@ -1,20 +1,26 @@
 
 <div  class="top-height my-stuff">
+  
+  <a href="/inventory/create">Add Stuff</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span> 
+ <a href="/inventory" class="">Back</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span> 
+        <a href="/profile/{{user._id}}">Profile</a>
+        <span class="invisible">--</span>|<span class="invisible">-</span> 
+        <a href="/logout" class="">Logout</a> 
+
+    <br><br>
 <p><b>Product: </b> {{ theProduct.productname }}<br></p>
+
 <img src="{{ theProduct.image }}" alt=""  width="200" height="200"> 
 <p class="">
     <b>Type: </b> {{ theProduct.productType }}<br>
     <b>Description:</b> <br>{{ theProduct.description }}<br>
     <b>Condition:</b> {{ theProduct.condition }}<br>
-    <b>Price:</b> ${{ theProduct.price }} per day</p>
+    <b>Price:</b> ${{ theProduct.price }} per day  {{ theProduct._id }}</p>
+   
+
 
 </div>
-
-  <br>
-  <a href="/inventory/create">Add Stuff</a>
-        <span class="invisible">--</span>|<span class="invisible">-</span> 
- <a href="/inventory" class="">My Stuff</a>
-        <span class="invisible">--</span>|<span class="invisible">-</span> 
-        <a href="/profile/{{user._id}}">Profile</a>
-        <span class="invisible">--</span>|<span class="invisible">-</span> 
-        <a href="/logout" class="">Logout</a> 
+    <button type="button" onclick='deleteProduct' class="btn btn-warning b-color">Remove Item</button>
+ 

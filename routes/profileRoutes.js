@@ -13,7 +13,7 @@ const uploadCloud = require('../config/cloudinary.js');
 const myUploader = multer({
     dest:path.join( __dirname, '../public/images')
    });
-
+ 
 
    /* GET profile page */
 router.get('/:id', ensureLogin.ensureLoggedIn('/login'), (req,res, next) => {
@@ -26,7 +26,7 @@ router.get('/:id', ensureLogin.ensureLoggedIn('/login'), (req,res, next) => {
             console.log("Error while displaying profile info ", error)
         })
   });//==END profile page
-  
+    
 
 
 // edit profile
