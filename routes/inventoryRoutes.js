@@ -22,6 +22,62 @@ const myUploader = multer({
 //     res.render('inventory/inventory');
 // })
 
+
+
+router.get('/borrowed', ensureLogin.ensureLoggedIn('/login'), (req,res,next) => {
+const borrowed = []
+
+if(req.user.productsBorrowed.length >0){
+
+req.user.productsBorrowed.forEach((oneProduct, i) => {
+    // console.log("-----------------", oneProduct)
+    Product.findById(oneProduct)
+        .then((theProduct) => {
+            borrowed.push(theProduct)
+        })
+        
+        .then(() => {
+            if(i === req.user.productsBorrowed.length -1){
+
+                res.render("inventory/borrowed", {user: req.user, products: borrowed})
+            }
+
+        })
+})
+} else{
+    res.render("inventory/borrowed", {user: req.user})
+}
+
+
+
+})//==END borrowed
+
+
+/* return */
+router.post('/returned', ensureLogin.ensureLoggedIn('/login'), (req,res,next) => { 
+
+    const productId = req.body.productId
+    Product.findById(productId)
+        .then((theProduct) =>{
+            theProduct.isAvailable = true
+            theProduct.save()
+                
+        })
+
+User.findById(req.user._id)
+    .then((theUser) => {
+        //==where in the array is the product id
+        const index = theUser.productsBorrowed.indexOf(productId)
+        theUser.productsBorrowed.splice(index, 1)
+        theUser.save()
+            .then(() => {
+                res.redirect('/inventory/borrowed')
+            })
+    })
+
+});//==END returned 
+
+
 router.get('/create', ensureLogin.ensureLoggedIn('/login'), (req,res,next) => {
     res.render("inventory/newInventory", {user: req.user})
 })
@@ -82,27 +138,7 @@ router.get("/", ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
   });//==END 
 
 
-  // details page
-  router.get('/:productId', ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
-      const productId = req.params.productId;
-      const isOwner = false;
-      var isReallyAvailable = false;
-      Product.findById(productId)
-      .then( productFromDb => {
-        //   console.log(productFromDb)
-        if(productFromDb.owner.equals(req.user._id)){
-            isOwner = true;
-        }
-        if(productFromDb.isAvailable === true){
-            isReallyAvailable = true
-        }
-        console.log("isReallyAvailable: ", isReallyAvailable)
-          res.render('inventory/productDetails', { theProduct: productFromDb, user: req.user, isOwner, isReallyAvailable })
-        } )//==End then
-      .catch( error => {
-          console.log("Error while displaying product details: ", error);
-      } )
-})//==End details page
+
 
 
 // delete product page
@@ -165,7 +201,31 @@ router.post('/borrow/:productId', (req, res, next) => {
     .catch(err => {
         console.log("err while findnig the product: ", err)
     })
-})
+})//==END borrow post 
+
+
+  // details page
+  router.get('/:productId', ensureLogin.ensureLoggedIn('/login'), (req, res, next) => {
+    const productId = req.params.productId;
+    const isOwner = false;
+    var isReallyAvailable = false;
+    Product.findById(productId)
+    .then( productFromDb => {
+      //   console.log(productFromDb)
+      if(productFromDb.owner.equals(req.user._id)){
+          isOwner = true;
+      }
+      if(productFromDb.isAvailable === true){
+          isReallyAvailable = true
+      }
+      console.log("isReallyAvailable: ", isReallyAvailable)
+        res.render('inventory/productDetails', { theProduct: productFromDb, user: req.user, isOwner, isReallyAvailable })
+      } )//==End then
+    .catch( error => {
+        console.log("Error while displaying product details: ", error);
+    } )
+})//==End details page
+
 
 
 

@@ -8,7 +8,8 @@
 <div>
 <img src='{{user.image}}' width="175" height="175"> 
     <br><br>
-<a href='/profile/{{user._id}}/edit' class="">Edit Profile</a>   
+<a href='/profile/{{user._id}}/edit' ><button class="b-color remove ">Edit Profile</button></a>
+    <br><br>
 
 </div>
 
@@ -16,6 +17,7 @@
 <div class="text-left">
     <p>Name:<br> {{user.firstname}}  {{user.lastname}}</p>
     <p>E-mail: <br>{{user.email}}</p>
+
 
 </div>
  
@@ -27,7 +29,7 @@
         <span class="invisible">--</span>|<span class="invisible">-</span> 
  <a href="/inventory" class="">My Stuff</a>
         <span class="invisible">--</span>|<span class="invisible">-</span> 
-        <a href="/logout" class="">Logout</a>
+<a href="/inventory/borrowed" >Borrowed Items</a>   
 
 
 {{!-- <button type="button" class="btn btn-success b-color"><a href="/bestow/logout"><span class="span-letters">Logout</span></a></button> --}}

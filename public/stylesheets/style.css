@@ -404,6 +404,9 @@ img {
 .item-display {
   margin-right: 40px; }
 
+.remove {
+  color: white; }
+
 /* Index */
 .bestow {
   color: #F9BA03; }

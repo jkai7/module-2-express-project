@@ -1,7 +1,11 @@
 
+
+
+
+
 <div class="top-height">
-<h1 class="underline">My Stuff</h1>
-        <a href="/explore">Back</a>
+<h1 class="underline"><span class="bestow">B</span>orrowed</h1>
+        <a href="/explore">Explore</a>
         <span class="invisible">-</span>|<span class="invisible">-</span> 
 <a href="/inventory/create">Add Stuff</a>
         {{!-- <span class="invisible">--</span>|<span class="invisible">-</span> 
@@ -20,9 +24,12 @@
         <div>
         <img src={{ this.image }} alt="furniture"   width="150" height="150">
         <br><br>
-        <form action="/inventory/{{this._id}}/delete" method="post">
-            <button class="b-color remove center-b" type="submit">Delete</button>
-        </form>        
+        
+        <form action="/inventory/returned" method="post">
+        <input type="hidden" name="productId" value="{{this._id}}">
+        <button class="b-color remove center-b">Return</button>
+        </form>  
+        
         <br><br>
         </div>
 
@@ -32,11 +39,11 @@
         <div >
         
         <div class="let-spacing">
-        <p ><b>Product: </b>{{ this.productname }}<br>
-        <b>Type:</b> {{this.productType}}<br>
+        <p ><b>Owner: </b>{{ this.ownerName }}<br>
+        {{!-- <b>Type:</b> {{this.productType}}<br> --}}
         <b>Price:</b> ${{this.price}} per day<br>
-        <b>Condition</b>: {{this.condition}}<br>
-        <b>Available:</b> {{this.isAvailable}}<br></p>
+        <b>Condition</b>: {{this.condition}}<br></p>
+        {{!-- <b>Available:</b> {{this.isAvailable}}<br></p> --}}
         {{!-- <a class="text-center" href="/inventory/{{this._id}}"><button class="btn btn-warning b-color">Details</button></a> --}}
         </div>
 
