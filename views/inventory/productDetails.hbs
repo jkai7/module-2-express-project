@@ -1,6 +1,6 @@
 
 <div  class="top-height my-stuff ">
-  
+  <h2>Details</h2>
 
   <a href="/explore">Explore</a>
         <span class="invisible">--</span>|<span class="invisible">-</span> 
@@ -17,23 +17,23 @@
 
     
 <p><b>Product: </b> {{ theProduct.productname }}<br></p>
-<img src="{{ theProduct.image }}" alt=""  width="200" height="200"> 
+<img src="{{ theProduct.image }}" alt=""  width="150" height="150"> 
 
 </div>
 
 <div class="text-left let-spacing">
 <p class="center-let">
+    <b>Owner: </b> {{ theProduct.ownerName }}<br>
     <b>Type: </b> {{ theProduct.productType }}<br>
-    <b>Description:</b> <br>{{ theProduct.description }}<br>
     <b>Condition:</b> {{ theProduct.condition }}<br>
-    <b>Price:</b> ${{ theProduct.price }} per day 
+    <b>Price:</b> ${{ theProduct.price }} per day <br>
+    <b>Zip Code: </b>{{ theProduct.areaCode }}
 </p>
 
-        <span class="invisible">------</span>
         {{#if isReallyAvailable}}
         {{#unless isOwner}}
 <form action="/inventory/borrow/{{theProduct._id}}" method="POST">
-    <button class="btn btn-warning b-color" type="submit">Borrow</button>
+    <button class="btn btn-warning b-color center-b" type="submit">Borrow</button>
 </form>
 {{/unless}}
 {{/if}}

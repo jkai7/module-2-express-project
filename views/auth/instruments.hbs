@@ -13,25 +13,23 @@
         <div class="text-left item-display">
 <ul >
     {{#each products}}
-        
-        
-        <li class="flex-container">
+              <li class="flex-container">
             
         <div>
-        <img src={{ this.image }} alt="furniture"   width="100" height="100">
+        <img src={{ this.image }} alt="furniture"   width="150" height="150">
         <br><br>
         </div>
 
         <div class="invisible">----</div>
 
         
-        <div>
-        <h4>{{ this.productname }}<br>
-        Price: ${{this.price}}</h4>
-        <a class="" href="/inventory/{{this._id}}"><button class="btn btn-warning b-color">Select</button></a>
+        <div class="let-spacing">
+        <p><b>Owner:</b> {{ this.ownerName }}<br>
+       <b>Product:</b><br> {{ this.productname }}<br>
+        <b>Price:</b> ${{this.price}}</p>
+        <a class="" href="/inventory/{{this._id}}"><button class="btn btn-warning b-color center-b">Select</button></a>
         </div>
 
-        
         
 
         

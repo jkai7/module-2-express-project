@@ -15,8 +15,8 @@ const productSchema = new Schema({
     areaCode: String,
     image: {type: String, default:"/images/user-default.png"},
     owner: { type: Schema.Types.ObjectId, ref: "User" },
-    isAvailable: {type: Boolean, default: true }
-
+    isAvailable: {type: Boolean, default: true },
+    ownerName: String
 })
 
 const Product = mongoose.model(`Product`, productSchema);

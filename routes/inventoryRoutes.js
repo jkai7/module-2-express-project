@@ -39,7 +39,8 @@ router.post('/create', ensureLogin.ensureLoggedIn('/login'), myUploader.single('
     city: req.body.productCity,
     areaCode: req.body.productAreaCode,
     image: `/images/${req.file.filename}`,
-    owner: req.user
+    owner: req.user,
+    ownerName: req.body.productOwnerName
  }) 
     newProduct.save()
     .then(() => {

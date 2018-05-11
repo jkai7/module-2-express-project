@@ -33,24 +33,24 @@
         
         <input type="number" name="productPrice" min="1.00" step="0.00" max="3000" value="1.00">
             <label>per day</label>
-            <br><br>
-        <label for="">City:</label>
+             <br><br>
+        <label for="">Owner:</label>
             <br>
-        <input type="text" name="productCity" id="">
+        <input type="text" name="productOwnerName" id="">
             <br><br>
         <label for="">Zip Code: </label>
             <br>
-        <input type="text" name="productAreaCode" id="" minlength="5">
+        <input type="text" name="productAreaCode" id="" minlength="5"> 
             <br><br>
         <label for="">Product Image:</label>
             <br>
             <div class="text-center">
         <input  class="move-left" type="file" name="productImage" id="image" required>
             </div>
-            <br><br>
+            {{!-- <br><br>
         <label for="">Description:</label>
             <br>
-        <textarea name="productDescription" id="" cols="25" rows="2"></textarea>
+        <textarea name="productDescription" id="" cols="25" rows="2"></textarea> --}}
             <br><br>
         <button type="submit" class="btn btn-warning b-color">Create</button>
         
