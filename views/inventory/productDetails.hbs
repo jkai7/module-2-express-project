@@ -24,7 +24,7 @@
 <div class="text-left let-spacing">
 <p class="center-let">
     <b>Owner: </b> {{ theProduct.ownerName }}<br>
-    <b>Type: </b> {{ theProduct.productType }}<br>
+    <b>Type: </b><br> {{ theProduct.productType }}<br>
     <b>Condition:</b> {{ theProduct.condition }}<br>
     <b>Price:</b> ${{ theProduct.price }} per day <br>
     <b>Zip Code: </b>{{ theProduct.areaCode }}
@@ -39,7 +39,7 @@
 {{/if}}
 
 {{#unless isReallyAvailable}}
-<p>Booked for next 3 days</p>
+<p class="message text-center"><b>Booked for next 3 days</b></p>
 {{/unless}}
 
 </div>

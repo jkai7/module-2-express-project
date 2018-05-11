@@ -21,7 +21,9 @@
         <img src={{ this.image }} alt="furniture"   width="150" height="150">
         <br><br>
         <form action="/inventory/{{this._id}}/delete" method="post">
+            {{#if this.isAvailable}}
             <button class="b-color remove center-b" type="submit">Delete</button>
+            {{/if}}
         </form>        
         <br><br>
         </div>
@@ -33,7 +35,7 @@
         
         <div class="let-spacing">
         <p ><b>Product: </b>{{ this.productname }}<br>
-        <b>Type:</b> {{this.productType}}<br>
+        <b>Type:</b><br>{{this.productType}}<br>
         <b>Price:</b> ${{this.price}} per day<br>
         <b>Condition</b>: {{this.condition}}<br>
         <b>Available:</b> {{this.isAvailable}}<br></p>
