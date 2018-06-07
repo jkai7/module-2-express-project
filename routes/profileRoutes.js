@@ -51,7 +51,7 @@ router.post('/:id', ensureLogin.ensureLoggedIn('/login'), myUploader.single('use
     const newFirstname = req.body.updatedFirstname;
     const newLastname = req.body.updatedLastname;
     const newEmail = req.body.updatedEmail;
-    const newImage = `/images/${req.file.filename}`
+    const newImage = `/images/${req.file.filename}`;
 
 
     User.findByIdAndUpdate(userId, {
@@ -60,7 +60,7 @@ router.post('/:id', ensureLogin.ensureLoggedIn('/login'), myUploader.single('use
         lastname: newLastname,
         email: newEmail,
         image: newImage
-    })
+    });
     
     
 .then( (user) => {
@@ -68,7 +68,7 @@ router.post('/:id', ensureLogin.ensureLoggedIn('/login'), myUploader.single('use
     } )
     .catch(error => {
         console.log("Error while saving updates: ", error)
-    })
+    });
 
 })//==END profile edit
 
