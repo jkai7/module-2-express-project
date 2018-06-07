@@ -42,7 +42,7 @@ req.user.productsBorrowed.forEach((oneProduct, i) => {
                 res.render("inventory/borrowed", {user: req.user, products: borrowed})
             }
 
-        })
+        });
 })
 } else{
     res.render("inventory/borrowed", {user: req.user})
